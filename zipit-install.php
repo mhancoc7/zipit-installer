@@ -7,7 +7,7 @@
 ###############################################################
 
 // grab the latest version of zipit from github
-shell_exec('wget https://github.com/jeremehancock/zipit/zipball/master -O zipit.zip; unzip zipit.zip; mv jeremehancock-zipit-* zipit; rm zipit.zip');
+shell_exec('wget https://github.com/jeremehancock/zipit/zipball/master --no-check-certificate -O zipit.zip; unzip zipit.zip; mv jeremehancock-zipit-* zipit; rm zipit.zip');
 
 if (isset($_POST["Submit"])) {
 

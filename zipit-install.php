@@ -42,7 +42,6 @@ shell_exec("rm ./zipit-install.php");
 echo "<script>location.href='./zipit/zipit-files.php'</script>";
 
 }
-
 ?>
 
 <html>

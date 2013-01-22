@@ -9,6 +9,9 @@
 // grab the latest version of zipit from github
 shell_exec('rm -rf zipit; wget https://github.com/jeremehancock/zipit/zipball/master --no-check-certificate -O zipit.zip; unzip zipit.zip; mv jeremehancock-zipit-* zipit; rm zipit.zip');
 
+// generate hash for auto option
+$hash = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
+
 if (isset($_POST["Submit"])) {
 
 $string = '<?php 
@@ -26,6 +29,9 @@ $password = "'. $_POST["password"]. '";
 // Cloud Files API -- Required!!
 $username = "'. $_POST["username"]. '";
 $key = "'. $_POST["key"]. '";
+
+// Zipit Auto Hash
+$auto_hash = "'. $_POST["hash"]. '";
 
 ?>';
 
@@ -141,6 +147,10 @@ function removeSpaces(string) {
 </p>
 
 <p>
+    <input name="hash" type="hidden" id="hash" value="<?php echo $hash ?>" onblur="this.value=removeSpaces(this.value);" required="required">
+</p>
+
+<p>
 
 
 <font color="red"><em>By installing the Zipit Backup Utility you are agreeing to the terms of the GPL License! See: <a href="http://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GPL v3</a></em></font><br /><br />
@@ -153,4 +163,3 @@ function removeSpaces(string) {
 </div></div>
 </body>
 </html>
-

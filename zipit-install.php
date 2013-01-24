@@ -61,6 +61,7 @@ body {
 height:100%;
 background: #ddd;
 margin-bottom: 1px;
+font-family: Arial;
 }
 
     input { 

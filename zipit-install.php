@@ -33,6 +33,15 @@ $key = "'. $_POST["key"]. '";
 // Zipit Auto Hash
 $auto_hash = "'. $_POST["hash"]. '";
 
+// determine datacenter for storage
+$string = $_SERVER["PHP_DOCUMENT_ROOT"];
+    $pos = strpos($string, "dfw");
+    if ($pos == false) {
+        $datacenter = "ORD";
+    } else {
+        $datacenter = "DFW";
+    }
+
 ?>';
 
 $fp = fopen("./zipit/zipit-config.php", "w");

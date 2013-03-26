@@ -9,6 +9,18 @@
 // grab the latest version of zipit from github
 shell_exec('rm -rf zipit; wget https://github.com/jeremehancock/zipit/zipball/master --no-check-certificate -O zipit.zip; unzip zipit.zip; mv jeremehancock-zipit-* zipit; rm zipit.zip');
 
+// determine datacenter for storage
+$string = $_SERVER["PHP_DOCUMENT_ROOT"];
+    $pos = strpos($string, "dfw");
+    if ($pos == false) {
+        $datacenter = "ORD";
+    } else {
+        $datacenter = "DFW";
+    }
+
+// define url
+    $url = $_SERVER['SERVER_NAME'];
+
 // generate hash for auto option
 $hash = substr(hash("sha512",rand()),0,12); // Reduces the size to 12 chars
 
@@ -22,7 +34,7 @@ $string = '<?php
 # Visit http://zipitbackup.com for updates
 ############################################################### 
 
-// Zipit Backup Utility -- Be sure to change the password!!
+// Zipit Backup Utility Login Credentials
 $zipituser = "'. $_POST["zipituser"]. '";
 $password = "'. $_POST["password"]. '";
 
@@ -30,17 +42,14 @@ $password = "'. $_POST["password"]. '";
 $username = "'. $_POST["username"]. '";
 $key = "'. $_POST["key"]. '";
 
+// Datacenter
+$datacenter = "'. $_POST["datacenter"]. '";
+
+// URL
+$url = "'. $_POST["url"]. '";
+
 // Zipit Auto Hash
 $auto_hash = "'. $_POST["hash"]. '";
-
-// determine datacenter for storage
-$string = $_SERVER["PHP_DOCUMENT_ROOT"];
-    $pos = strpos($string, "dfw");
-    if ($pos == false) {
-        $datacenter = "ORD";
-    } else {
-        $datacenter = "DFW";
-    }
 
 ?>';
 
@@ -160,6 +169,13 @@ function removeSpaces(string) {
     <input name="hash" type="hidden" id="hash" value="<?php echo $hash ?>" onblur="this.value=removeSpaces(this.value);" required="required">
 </p>
 
+<p>
+    <input name="datacenter" type="hidden" id="datacenter" value="<?php echo $datacenter ?>" onblur="this.value=removeSpaces(this.value);" required="required">
+</p>
+
+<p>
+    <input name="url" type="hidden" id="url" value="<?php echo $url ?>" onblur="this.value=removeSpaces(this.value);" required="required">
+</p>
 <p>
 
 

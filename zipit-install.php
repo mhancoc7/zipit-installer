@@ -221,11 +221,11 @@ h4 {
 }
 
 #tabscontent {
-	-moz-border-radius-topleft: 0px;
+	-moz-border-radius-topleft: 5px;
 	-moz-border-radius-topright: 5px;
 	-moz-border-radius-bottomright: 5px;
 	-moz-border-radius-bottomleft: 5px;
-	border-top-left-radius: 0px;
+	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px; 
